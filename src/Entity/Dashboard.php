@@ -2,14 +2,39 @@
 
 namespace ControleOnline\Entity;
 
-use ApiPlatform\Metadata\Post;
-use ApiPlatform\Metadata\ApiResource;
-use ApiPlatform\Metadata\ApiProperty;
-use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
+ * @ApiResource(
+ *     collectionOperations={
+ *         "post"={
+ *             "path"="/dashboard",
+ *             "status"=202,
+ *             "security"="is_granted('ROLE_CLIENT')",
+ *             "messenger"=true,
+ *             "denormalization_context"={
+ *                 "groups"={"dashboard_read"}
+ *             },
+ *             "normalization_context"={
+ *                 "groups"={"dashboard_write"}
+ *             }
+ *         },
+ *         "post"={
+ *             "path"="/dashboard/financial",
+ *             "status"=202,
+ *             "security"="is_granted('ROLE_CLIENT')",
+ *             "messenger"=true,
+ *             "denormalization_context"={
+ *                 "groups"={"dashboard_read"}
+ *             },
+ *             "normalization_context"={
+ *                 "groups"={"dashboard_write"}
+ *             }
+ *         }
+ *     }
+ * )
  */
-#[ApiResource(operations: [new Post(status: 202, uriTemplate: '/dashboard'), new Post(status: 202, uriTemplate: '/dashboard/financial')], formats: ['jsonld', 'json', 'html', 'jsonhal', 'csv' => ['text/csv']], security: 'is_granted(\'ROLE_CLIENT\')', messenger: true)]
 final class Dashboard
 {
     /**
