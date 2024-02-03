@@ -2,21 +2,14 @@
 
 namespace ControleOnline\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\ApiProperty;
+use ApiPlatform\Metadata\ApiFilter;
 use Symfony\Component\Validator\Constraints as Assert;
-
 /**
- * @ApiResource(
- *     itemOperations={
- *         "post"={
- *             "path"="/dashboard/main.{_format}",
- *             "status"=202,
- *             "security"="is_granted('ROLE_CLIENT')",
- *         },
- *     },
- *     formats={"jsonld", "json", "html", "jsonhal", "csv"={"text/csv"}},
- * )
  */
+#[ApiResource(operations: [new Post(status: 202, uriTemplate: '/dashboard/main')], formats: ['jsonld', 'json', 'html', 'jsonhal', 'csv' => ['text/csv']], security: 'is_granted(\'ROLE_CLIENT\')', messenger: true)]
 final class MainDashboard
 {
     /**
