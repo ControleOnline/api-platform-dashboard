@@ -1,3 +1,5 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/controleonline/api-platform-dashboard/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/controleonline/api-platform-dashboard/?branch=master)
+
 # dashboard
 
 
